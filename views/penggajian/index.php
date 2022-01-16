@@ -1,5 +1,6 @@
 <?php
 
+use app\models\Penggajian;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
@@ -20,18 +21,24 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('Create Penggajian', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <?php echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
+        //'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
             'tanggal',
             'keterangan:ntext',
-            'karyawan_id',
+            [
+                'attribute' => 'karyawan_id',
+                'label'     => 'Karyawan',
+                'value'     => function($model){
+                    return $model->karyawan->nama;
+                }
+            ],
             'jumlah_gaji',
             //'jumlah_lembur',
             //'potongan',

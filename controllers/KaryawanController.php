@@ -1,15 +1,16 @@
 <?php
 
-namespace app\models;
+namespace app\controllers;
 
 use app\models\Karyawan;
 use app\models\KaryawanSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
- * KaryawanController implements the CRUD actions for Karyawan model.
+ * KaryawanController implements the CRUD actions for Golongan model.
  */
 class KaryawanController extends Controller
 {
@@ -32,7 +33,7 @@ class KaryawanController extends Controller
     }
 
     /**
-     * Lists all Karyawan models.
+     * Lists all Golongan models.
      *
      * @return string
      */
@@ -48,7 +49,7 @@ class KaryawanController extends Controller
     }
 
     /**
-     * Displays a single Karyawan model.
+     * Displays a single Golongan model.
      * @param int $id ID
      * @return string
      * @throws NotFoundHttpException if the model cannot be found
@@ -61,7 +62,7 @@ class KaryawanController extends Controller
     }
 
     /**
-     * Creates a new Karyawan model.
+     * Creates a new Golongan model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return string|\yii\web\Response
      */
@@ -70,6 +71,8 @@ class KaryawanController extends Controller
         $model = new Karyawan();
 
         if ($this->request->isPost) {
+            $model->imageFile = UploadedFile::getInstance($model, 'foto');
+            
             if ($model->load($this->request->post()) && $model->save()) {
                 return $this->redirect(['view', 'id' => $model->id]);
             }
@@ -83,7 +86,7 @@ class KaryawanController extends Controller
     }
 
     /**
-     * Updates an existing Karyawan model.
+     * Updates an existing Golongan model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param int $id ID
      * @return string|\yii\web\Response
@@ -103,7 +106,7 @@ class KaryawanController extends Controller
     }
 
     /**
-     * Deletes an existing Karyawan model.
+     * Deletes an existing Golongan model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param int $id ID
      * @return \yii\web\Response
@@ -117,10 +120,10 @@ class KaryawanController extends Controller
     }
 
     /**
-     * Finds the Karyawan model based on its primary key value.
+     * Finds the Golongan model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param int $id ID
-     * @return Karyawan the loaded model
+     * @return Golongan the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)

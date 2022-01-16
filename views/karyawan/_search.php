@@ -15,17 +15,32 @@ use yii\widgets\ActiveForm;
         'method' => 'get',
     ]); ?>
 
-    <?= $form->field($model, 'id') ?>
+    <div class="container">
+        <div class="row">
 
-    <?= $form->field($model, 'nip') ?>
+    
+            <div class="col-md-2">
+                <?= $form->field($model, 'nip') ?>
+            </div>
 
-    <?= $form->field($model, 'nik') ?>
+            <div class="col-md-3">
+                <?= $form->field($model, 'nik') ?>
+            </div>
 
-    <?= $form->field($model, 'nama') ?>
+            <div class="col-md-3">
+                <?= $form->field($model, 'nama') ?>
+            </div>
+            <div class="col-md-3">
+                <?= $form->field($model, 'jenis_kelamin') ?>
+            </div>
 
-    <?= $form->field($model, 'jenis_kelamin') ?>
+            </div>
+        <div>
+    </div>
 
-    <?php // echo $form->field($model, 'tempat_lahir') ?>
+
+    
+
 
     <?php // echo $form->field($model, 'tanggal_lahir') ?>
 
@@ -45,6 +60,7 @@ use yii\widgets\ActiveForm;
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
         <?= Html::resetButton('Reset', ['class' => 'btn btn-outline-secondary']) ?>
     </div>
+    <br
 
     <?php ActiveForm::end(); ?>
 

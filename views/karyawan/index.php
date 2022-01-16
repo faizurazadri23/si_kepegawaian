@@ -1,5 +1,6 @@
 <?php
 
+use app\models\Karyawan;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
@@ -9,7 +10,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\KaryawanSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Karyawans';
+$this->title = 'Karyawan';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="karyawan-index">
@@ -20,25 +21,23 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('Create Karyawan', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <?php echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
+        //'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
-            'id',
             'nip',
             'nik',
             'nama',
             'jenis_kelamin',
-            //'tempat_lahir',
-            //'tanggal_lahir',
-            //'telpon',
-            //'agama',
-            //'status_nikah',
-            //'alamat:ntext',
+            'tempat_lahir',
+            'tanggal_lahir',
+            'telpon',
+            'agama',
+            'status_nikah',
+            'alamat:ntext',
             //'golongan_id',
             //'foto',
             [

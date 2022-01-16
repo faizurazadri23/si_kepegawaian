@@ -1,5 +1,6 @@
 <?php
 
+use app\models\Cuti;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
@@ -9,7 +10,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\CutiSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Cutis';
+$this->title = 'Cuti';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="cuti-index">
@@ -20,16 +21,21 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('Create Cuti', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <?php echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
+        //'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
-            'karyawan_id',
+            [
+                'attribute' => 'karyawan_id',
+                'label'     => 'Karyawan',
+                'value'     => function($model){
+                    return $model->karyawan->nama;
+                }
+            ],
             'tanggal_cuti',
             'jumlah',
             [

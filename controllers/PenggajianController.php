@@ -1,17 +1,17 @@
 <?php
 
-namespace app\models;
+namespace app\controllers;
 
-use app\models\Golongan;
-use app\models\GolonganSearch;
+use app\models\Penggajian;
+use app\models\PenggajianSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * GolonganController implements the CRUD actions for Golongan model.
+ * PenggajianController implements the CRUD actions for Penggajian model.
  */
-class GolonganController extends Controller
+class PenggajianController extends Controller
 {
     /**
      * @inheritDoc
@@ -32,13 +32,13 @@ class GolonganController extends Controller
     }
 
     /**
-     * Lists all Golongan models.
+     * Lists all Penggajian models.
      *
      * @return string
      */
     public function actionIndex()
     {
-        $searchModel = new GolonganSearch();
+        $searchModel = new PenggajianSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
 
         return $this->render('index', [
@@ -48,7 +48,7 @@ class GolonganController extends Controller
     }
 
     /**
-     * Displays a single Golongan model.
+     * Displays a single Penggajian model.
      * @param int $id ID
      * @return string
      * @throws NotFoundHttpException if the model cannot be found
@@ -61,13 +61,13 @@ class GolonganController extends Controller
     }
 
     /**
-     * Creates a new Golongan model.
+     * Creates a new Penggajian model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return string|\yii\web\Response
      */
     public function actionCreate()
     {
-        $model = new Golongan();
+        $model = new Penggajian();
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
@@ -83,7 +83,7 @@ class GolonganController extends Controller
     }
 
     /**
-     * Updates an existing Golongan model.
+     * Updates an existing Penggajian model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param int $id ID
      * @return string|\yii\web\Response
@@ -103,7 +103,7 @@ class GolonganController extends Controller
     }
 
     /**
-     * Deletes an existing Golongan model.
+     * Deletes an existing Penggajian model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param int $id ID
      * @return \yii\web\Response
@@ -117,15 +117,15 @@ class GolonganController extends Controller
     }
 
     /**
-     * Finds the Golongan model based on its primary key value.
+     * Finds the Penggajian model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param int $id ID
-     * @return Golongan the loaded model
+     * @return Penggajian the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Golongan::findOne(['id' => $id])) !== null) {
+        if (($model = Penggajian::findOne(['id' => $id])) !== null) {
             return $model;
         }
 

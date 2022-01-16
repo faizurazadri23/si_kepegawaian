@@ -38,6 +38,17 @@ AppAsset::register($this);
         'options' => ['class' => 'navbar-nav'],
         'items' => [
             ['label' => 'Home', 'url' => ['/site/index']],
+            [
+                'label' => 'Karyawan',
+                'url'   => '#',
+                'items' => [
+                    ['label'    => 'Karyawan', 'url' => ['/karyawan']],
+                    ['label'    => 'Cuti', 'url'    => ['/cuti']],
+                    ['label'    => 'Penggajian', 'url' => ['/penggajian']],
+                    ['label'    => 'Lembur', 'url' => ['/lembur']],
+                ]
+            ],
+            ['label' => 'Golongan', 'url' => ['/golongan']],
             ['label' => 'About', 'url' => ['/site/about']],
             ['label' => 'Contact', 'url' => ['/site/contact']],
             Yii::$app->user->isGuest ? (
@@ -70,8 +81,8 @@ AppAsset::register($this);
 
 <footer class="footer mt-auto py-3 text-muted">
     <div class="container">
-        <p class="float-left">&copy; My Company <?= date('Y') ?></p>
-        <p class="float-right"><?= Yii::powered() ?></p>
+        <p class="float-left">&copy; Sistem Kepegawaian <?= date('Y') ?></p>
+        <p class="float-right"></p>
     </div>
 </footer>
 

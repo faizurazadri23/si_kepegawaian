@@ -46,7 +46,7 @@ class Cuti extends \yii\db\ActiveRecord
             'id' => 'ID',
             'karyawan_id' => 'Karyawan ID',
             'tanggal_cuti' => 'Tanggal Cuti',
-            'jumlah' => 'Jumlah',
+            'jumlah' => 'Jumlah Hari Cuti',
         ];
     }
 

@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-
+use yii\jui\DatePicker;
 /* @var $this yii\web\View */
 /* @var $model app\models\Karyawan */
 /* @var $form yii\widgets\ActiveForm */
@@ -22,7 +22,10 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'tempat_lahir')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'tanggal_lahir')->textInput() ?>
+    <?= $form->field($model, 'tanggal_lahir')->widget(DatePicker::classname(), [
+    //'language' => 'ru',
+    //'dateFormat' => 'yyyy-MM-dd',
+]) ?>
 
     <?= $form->field($model, 'telpon')->textInput(['maxlength' => true]) ?>
 
@@ -32,9 +35,17 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'alamat')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'golongan_id')->textInput() ?>
+    <?php
+        $querySupplier = (new \app\models\Golongan())->find()->orderBy(['nama_golongan'=> SORT_ASC])->all();
 
-    <?= $form->field($model, 'foto')->textInput(['maxlength' => true]) ?>
+        $dataKaryawan = \yii\helpers\ArrayHelper::map($querySupplier, 'id', 'nama_golongan');
+
+        echo $form->field($model, 'golongan_id')->dropDownList($dataKaryawan, [
+            'prompt'=>'--Pilih Golongan--'
+        ])->label('Golongan');
+    ?>
+
+    <!-- <?= $form->field($model, 'foto')->fileInput() ?> -->
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

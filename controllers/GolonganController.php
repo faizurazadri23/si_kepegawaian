@@ -1,17 +1,18 @@
 <?php
 
-namespace app\models;
+namespace app\controllers;
 
-use app\models\Lembur;
-use app\models\LemburSearch;
+use app\models\Golongan;
+use app\models\GolonganSearch;
+use Yii;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * LemburController implements the CRUD actions for Lembur model.
+ * GolonganController implements the CRUD actions for Golongan model.
  */
-class LemburController extends Controller
+class GolonganController extends Controller
 {
     /**
      * @inheritDoc
@@ -32,13 +33,13 @@ class LemburController extends Controller
     }
 
     /**
-     * Lists all Lembur models.
+     * Lists all Golongan models.
      *
      * @return string
      */
     public function actionIndex()
     {
-        $searchModel = new LemburSearch();
+        $searchModel = new GolonganSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
 
         return $this->render('index', [
@@ -48,7 +49,7 @@ class LemburController extends Controller
     }
 
     /**
-     * Displays a single Lembur model.
+     * Displays a single Golongan model.
      * @param int $id ID
      * @return string
      * @throws NotFoundHttpException if the model cannot be found
@@ -61,15 +62,20 @@ class LemburController extends Controller
     }
 
     /**
-     * Creates a new Lembur model.
+     * Creates a new Golongan model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return string|\yii\web\Response
      */
     public function actionCreate()
     {
-        $model = new Lembur();
+        $model = new Golongan();
 
         if ($this->request->isPost) {
+
+            $data = array(
+                'nama_golongan' => $this->request->post('nama_golongan'),
+            );
+
             if ($model->load($this->request->post()) && $model->save()) {
                 return $this->redirect(['view', 'id' => $model->id]);
             }
@@ -83,7 +89,7 @@ class LemburController extends Controller
     }
 
     /**
-     * Updates an existing Lembur model.
+     * Updates an existing Golongan model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param int $id ID
      * @return string|\yii\web\Response
@@ -103,7 +109,7 @@ class LemburController extends Controller
     }
 
     /**
-     * Deletes an existing Lembur model.
+     * Deletes an existing Golongan model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param int $id ID
      * @return \yii\web\Response
@@ -117,15 +123,16 @@ class LemburController extends Controller
     }
 
     /**
-     * Finds the Lembur model based on its primary key value.
+     * Finds the Golongan model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param int $id ID
-     * @return Lembur the loaded model
+     * @return Golongan the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Lembur::findOne(['id' => $id])) !== null) {
+        if (($model = Golongan::findOne(['id' => $id])) !== null) {
+            
             return $model;
         }
 

@@ -36,6 +36,8 @@ class Karyawan extends \yii\db\ActiveRecord
         return 'karyawan';
     }
 
+    public $imageFile;
+    
     /**
      * {@inheritdoc}
      */
@@ -49,9 +51,19 @@ class Karyawan extends \yii\db\ActiveRecord
             [['nip', 'nik', 'telpon'], 'string', 'max' => 12],
             [['nama', 'tempat_lahir'], 'string', 'max' => 100],
             [['agama'], 'string', 'max' => 13],
-            [['foto'], 'string', 'max' => 150],
+            [['foto'], 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg'],
             [['golongan_id'], 'exist', 'skipOnError' => true, 'targetClass' => Golongan::className(), 'targetAttribute' => ['golongan_id' => 'id']],
         ];
+    }
+
+    public function upload()
+    {
+        if ($this->validate()) {
+            $this->imageFile->saveAs('uploads/' . $this->imageFile->baseName . '.' . $this->imageFile->extension);
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**

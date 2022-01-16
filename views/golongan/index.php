@@ -1,5 +1,6 @@
 <?php
 
+use app\models\Golongan;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
@@ -9,7 +10,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\GolonganSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Golongans';
+$this->title = 'Golongan';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="golongan-index">
@@ -20,21 +21,20 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('Create Golongan', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <?php echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
+        //'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
             'nama_golongan',
             'gaji_pokok',
             'tunjangan_istri',
             'tunjangan_anak',
-            //'tunjangan_transport',
-            //'tunjangan_makan',
+            'tunjangan_transport',
+            'tunjangan_makan',
             [
                 'class' => ActionColumn::className(),
                 'urlCreator' => function ($action, Golongan $model, $key, $index, $column) {

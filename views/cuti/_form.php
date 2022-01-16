@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\jui\DatePicker;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Cuti */
@@ -12,10 +13,20 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'karyawan_id')->textInput() ?>
+    <?php
+        $queryKaryawan = (new \app\models\Karyawan())->find()->orderBy(['nama'=> SORT_ASC])->all();
 
-    <?= $form->field($model, 'tanggal_cuti')->textInput() ?>
+        $dataKaryawan = \yii\helpers\ArrayHelper::map($queryKaryawan, 'id', 'nama');
 
+        echo $form->field($model, 'karyawan_id')->dropDownList($dataKaryawan, [
+            'prompt'=>'--Pilih Karyawan--'
+        ])->label('karyawan');
+    ?>
+
+    <?= $form->field($model, 'tanggal_cuti')->widget(DatePicker::classname(), [
+        //'language' => 'ru',
+        'dateFormat' => 'yyyy-MM-dd',
+    ]) ?>
     <?= $form->field($model, 'jumlah')->textInput() ?>
 
     <div class="form-group">

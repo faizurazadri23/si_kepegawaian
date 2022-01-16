@@ -15,13 +15,31 @@ use yii\widgets\ActiveForm;
         'method' => 'get',
     ]); ?>
 
-    <?= $form->field($model, 'id') ?>
+    <div class="container">
+        <div class="row">
+ 
+            <div class="col-md-3">
+                <?= $form->field($model, 'karyawan_id') ?>
+            </div>
 
-    <?= $form->field($model, 'karyawan_id') ?>
+            <div class="col-md-3">
+                <?= $form->field($model, 'tanggal_cuti') ?>
+            </div>
 
-    <?= $form->field($model, 'tanggal_cuti') ?>
+            <div class="col-md-2">
+                <?= $form->field($model, 'jumlah') ?>
+            </div>
+        </div>
 
-    <?= $form->field($model, 'jumlah') ?>
+    </div>
+
+    
+
+    
+
+    
+
+    
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

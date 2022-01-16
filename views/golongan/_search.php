@@ -15,15 +15,29 @@ use yii\widgets\ActiveForm;
         'method' => 'get',
     ]); ?>
 
-    <?= $form->field($model, 'id') ?>
+    <div class="container">
+        <div class="row">
+ 
+            <div class="col-md-3">
+                <?= $form->field($model, 'nama_golongan') ?>
+            </div>
 
-    <?= $form->field($model, 'nama_golongan') ?>
+            <div class="col-md-3">
+                <?= $form->field($model, 'gaji_pokok') ?>
 
-    <?= $form->field($model, 'gaji_pokok') ?>
+            </div>
 
-    <?= $form->field($model, 'tunjangan_istri') ?>
+            <div class="col-md-2">
+                <?= $form->field($model, 'tunjangan_istri') ?>
+            </div>
 
-    <?= $form->field($model, 'tunjangan_anak') ?>
+            <div class="col-md-2">
+                <?= $form->field($model, 'tunjangan_anak') ?>
+            </div>
+        </div>
+
+    </div>
+
 
     <?php // echo $form->field($model, 'tunjangan_transport') ?>
 

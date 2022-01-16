@@ -32,7 +32,7 @@ class Lembur extends \yii\db\ActiveRecord
         return [
             [['karyawan_id', 'tanggal_lembur', 'jumlah'], 'required'],
             [['karyawan_id', 'jumlah'], 'integer'],
-            [['tanggal_lembur'], 'safe'],
+            [['tanggal_lembur'], 'date', 'format' => 'php:Y-m-d'],
             [['karyawan_id'], 'exist', 'skipOnError' => true, 'targetClass' => Karyawan::className(), 'targetAttribute' => ['karyawan_id' => 'id']],
         ];
     }
