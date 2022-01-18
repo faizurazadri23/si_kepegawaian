@@ -24,7 +24,7 @@ use yii\jui\DatePicker;
 
     <?= $form->field($model, 'tanggal_lahir')->widget(DatePicker::classname(), [
     //'language' => 'ru',
-    //'dateFormat' => 'yyyy-MM-dd',
+    'dateFormat' => 'yyyy-MM-dd',
 ]) ?>
 
     <?= $form->field($model, 'telpon')->textInput(['maxlength' => true]) ?>
@@ -45,7 +45,7 @@ use yii\jui\DatePicker;
         ])->label('Golongan');
     ?>
 
-    <!-- <?= $form->field($model, 'foto')->fileInput() ?> -->
+    <?= $form->field($model, 'foto')->fileInput() ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
